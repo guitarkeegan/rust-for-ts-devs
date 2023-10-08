@@ -1,29 +1,28 @@
 package main
 
-import (
-	"bufio"
-	"fmt"
-	"os"
-)
+import "fmt"
 
 func main() {
-	file, err := os.Open("lines")
-	if err != nil {
-		fmt.Println("Error opening file")
-		return
+
+	var col = Color{"red", "blue", "green"}
+	fmt.Println(col.isGreen())
+	newCol := newColor()
+	fmt.Println(newCol.isGreen())
+}
+
+type Color struct {
+	Red   string
+	Blue  string
+	Green string
+}
+
+func newColor() Color {
+	return Color{"hi", "yo", "hey"}
+}
+
+func (c Color) isGreen() bool {
+	if c.Green == "green" {
+		return true
 	}
-	defer file.Close()
-
-	scanner := bufio.NewScanner(file)
-
-	for scanner.Scan() {
-		line := scanner.Text()
-		fmt.Println(line)
-	}
-
-	if err := scanner.Err(); err != nil {
-		fmt.Println("Error reading file: ", err)
-		return
-	}
-
+	return false
 }
