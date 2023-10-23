@@ -1,6 +1,7 @@
-import fs from "fs";
+function myFunk(n: number | undefined): number | undefined {
+  if (!n) return (n ?? undefined)
+  return n*5;
+}
 
-fs.readFileSync("lines").
-  toString().
-  split("\n").
-  forEach(line => console.log(line));
+console.log(myFunk(undefined));
+console.log(myFunk(5));

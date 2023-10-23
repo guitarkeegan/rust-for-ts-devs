@@ -1,43 +1,11 @@
-fn main() {
 
-    let foo = Color::Green;
-
-    foo.is_green();
-    foo.is_green_parts();
-
-}
-
-enum Color {
-    Red,
-    Blue,
-    Green,
-    Yellow,
-}
-
-impl Color {
-    // only need to read data
-    fn is_green(&self) -> bool {
-        if let Color::Green = self {
-            return true;
-        }
-        return false;
+fn main(){
+    fn my_funk(n: Option<i32>) -> Option<i32> {
+        let n = n?;
+        return Some(5*n);
     }
 
-    fn is_green_parts(&self) -> bool {
-        match self {
-            Color::Red => return false,
-            Color::Blue => return true,
-            Color::Green => return false,
-            Color::Yellow => return true,
-        }
-    }
-}
+    println!("{:?}", my_funk(Some(55)));
+    println!("{:?}", my_funk(None));
 
-fn print_color(c: Color){
-    match c {
-        Color::Red => println!("red"),
-        Color::Blue => println!("blue"),
-        Color::Green => println!("green"),
-        Color::Yellow => println!("yellow"),
-    }
 }
